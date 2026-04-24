@@ -58,7 +58,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-slate-800 mt-8 pt-8 text-center text-sm">
-          © 2025 AI Tube. All rights reserved.
+          © 2026 AI Tube. All rights reserved.
         </div>
       </div>
     </footer>

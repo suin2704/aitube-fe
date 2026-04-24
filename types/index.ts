@@ -16,12 +16,10 @@ export interface Video {
 }
 
 export type Category =
-  | "ai-tools"
-  | "prompt-engineering"
-  | "model-dev"
-  | "ai-news"
-  | "use-cases";
+  | "ai-trend"
+  | "ai-usage"
+  | "ai-learning";
 
 export type Difficulty = "beginner" | "intermediate" | "advanced";
 
-export type Language = "ko" | "en" | "both";
+export type Language = "ko" | "en";

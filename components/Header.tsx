@@ -5,8 +5,6 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Bot, Menu, X, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { CATEGORY_SLUGS } from "@/lib/constants";
-import type { Category } from "@/types";
 
 export default function Header() {
   const pathname = usePathname();
@@ -15,10 +13,6 @@ export default function Header() {
   const navLinks = [
     { href: "/", label: "홈" },
     { href: "/videos", label: "영상 목록" },
-    ...Object.entries(CATEGORY_SLUGS).map(([slug, name]) => ({
-      href: `/category/${slug}`,
-      label: name,
-    })),
     { href: "/about", label: "소개" },
   ];
 
