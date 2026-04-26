@@ -65,15 +65,19 @@ export async function fetchVideos(params: FetchVideosParams = {}): Promise<Fetch
 }
 
 export async function fetchVideoById(id: string): Promise<Video | null> {
-  const res = await fetch(`${API_URL}/videos/${id}`, {
-    next: { revalidate: 60 },
-  });
+  try {
+    const res = await fetch(`${API_URL}/videos/${id}`, {
+      cache: "no-store",
+    });
 
-  if (res.status === 404) return null;
-  if (!res.ok) throw new Error(`Failed to fetch video: ${res.status}`);
+    if (res.status === 404) return null;
+    if (!res.ok) return null;
 
-  const json = await res.json();
-  return transformVideo(json.data);
+    const json = await res.json();
+    return transformVideo(json.data);
+  } catch {
+    return null;
+  }
 }
 
 export async function fetchRelatedVideos(id: string, limit = 4): Promise<Video[]> {

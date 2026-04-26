@@ -16,6 +16,8 @@ import { fetchVideoById, fetchRelatedVideos } from "@/lib/api";
 import { LANGUAGE_MAP } from "@/lib/constants";
 import { formatViewCount, formatRelativeDate } from "@/lib/utils";
 
+export const dynamic = "force-dynamic";
+
 interface VideoDetailPageProps {
   params: Promise<{ id: string }>;
 }
