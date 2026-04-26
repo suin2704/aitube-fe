@@ -12,7 +12,7 @@ import {
 import DifficultyBadge from "@/components/DifficultyBadge";
 import CategoryBadge from "@/components/CategoryBadge";
 import VideoCard from "@/components/VideoCard";
-import { fetchVideoById, fetchRelatedVideos, debugFetchVideo } from "@/lib/api";
+import { fetchVideoById, fetchRelatedVideos } from "@/lib/api";
 import { LANGUAGE_MAP } from "@/lib/constants";
 import { formatViewCount, formatRelativeDate } from "@/lib/utils";
 
@@ -29,13 +29,7 @@ export default async function VideoDetailPage({
   const video = await fetchVideoById(id);
 
   if (!video) {
-    const debug = await debugFetchVideo(id);
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-2xl font-bold mb-4">Debug: Video fetch failed</h1>
-        <pre className="bg-slate-100 p-4 rounded text-sm overflow-auto">{debug}</pre>
-      </div>
-    );
+    notFound();
   }
   }
 
