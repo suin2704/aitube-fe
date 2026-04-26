@@ -11,7 +11,8 @@ import {
 } from "@/components/ui/card";
 import DifficultyBadge from "@/components/DifficultyBadge";
 import CategoryBadge from "@/components/CategoryBadge";
-import { mockVideos } from "@/lib/mock-data";
+import VideoCard from "@/components/VideoCard";
+import { fetchVideoById, fetchRelatedVideos } from "@/lib/api";
 import { LANGUAGE_MAP } from "@/lib/constants";
 import { formatViewCount, formatRelativeDate } from "@/lib/utils";
 
@@ -23,11 +24,13 @@ export default async function VideoDetailPage({
   params,
 }: VideoDetailPageProps) {
   const { id } = await params;
-  const video = mockVideos.find((v) => v.id === id);
+  const video = await fetchVideoById(id);
 
   if (!video) {
     notFound();
   }
+
+  const relatedVideos = await fetchRelatedVideos(id, 4);
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -142,6 +145,17 @@ export default async function VideoDetailPage({
           </Card>
         </div>
       </div>
+
+      {relatedVideos.length > 0 && (
+        <div className="mt-12">
+          <h2 className="text-xl font-bold text-slate-900 mb-6">📺 관련 영상</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {relatedVideos.map((v) => (
+              <VideoCard key={v.id} video={v} />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -2,12 +2,13 @@ import HeroBanner from "@/components/home/HeroBanner";
 import StatsCounter from "@/components/home/StatsCounter";
 import FeaturedVideos from "@/components/home/FeaturedVideos";
 import LatestVideos from "@/components/home/LatestVideos";
-import { mockVideos } from "@/lib/mock-data";
+import { fetchVideos } from "@/lib/api";
 
-export default function Home() {
-  const featuredVideos = [...mockVideos].sort(
-    (a, b) => b.viewCount - a.viewCount
-  );
+export default async function Home() {
+  const [featuredResult, latestResult] = await Promise.all([
+    fetchVideos({ sort: "popular", limit: 4 }),
+    fetchVideos({ sort: "latest", limit: 8 }),
+  ]);
 
   return (
     <>
@@ -15,8 +16,8 @@ export default function Home() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <StatsCounter />
       </div>
-      <FeaturedVideos videos={featuredVideos} />
-      <LatestVideos videos={mockVideos} />
+      <FeaturedVideos videos={featuredResult.videos} />
+      <LatestVideos videos={latestResult.videos} />
     </>
   );
 }

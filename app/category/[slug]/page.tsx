@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import VideoGrid from "@/components/VideoGrid";
 import CategoryNav from "@/components/CategoryNav";
-import { mockVideos } from "@/lib/mock-data";
+import { fetchVideos } from "@/lib/api";
 import { CATEGORY_SLUGS } from "@/lib/constants";
 import type { Category } from "@/types";
 
@@ -18,7 +18,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   const category = slug as Category;
   const categoryName = CATEGORY_SLUGS[category];
-  const videos = mockVideos.filter((v) => v.category === category);
+  const { videos } = await fetchVideos({ category: slug, limit: 48 });
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
