@@ -65,8 +65,9 @@ export async function fetchVideos(params: FetchVideosParams = {}): Promise<Fetch
 }
 
 export async function fetchVideoById(id: string): Promise<Video | null> {
+  const url = `${API_URL}/videos/${id}`;
   try {
-    const res = await fetch(`${API_URL}/videos/${id}`, {
+    const res = await fetch(url, {
       cache: "no-store",
     });
 
@@ -77,6 +78,27 @@ export async function fetchVideoById(id: string): Promise<Video | null> {
     return transformVideo(json.data);
   } catch {
     return null;
+  }
+}
+
+// Temporary debug function
+export async function debugFetchVideo(id: string): Promise<string> {
+  const url = `${API_URL}/videos/${id}`;
+  try {
+    const res = await fetch(url, { cache: "no-store" });
+    const text = await res.text();
+    return JSON.stringify({
+      url,
+      status: res.status,
+      ok: res.ok,
+      bodyLength: text.length,
+      bodyPreview: text.slice(0, 500),
+    }, null, 2);
+  } catch (e: unknown) {
+    return JSON.stringify({
+      url,
+      error: e instanceof Error ? e.message : String(e),
+    }, null, 2);
   }
 }
 
