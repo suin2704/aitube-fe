@@ -7,8 +7,6 @@ import Pagination from "@/components/Pagination";
 import { DIFFICULTY_MAP, LANGUAGE_MAP } from "@/lib/constants";
 import type { Video, Difficulty, Language } from "@/types";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://aitube-be-production.up.railway.app/api/v1";
-
 type SortOption = "latest" | "popular";
 
 export default function VideosPage() {
@@ -36,7 +34,9 @@ export default function VideosPage() {
         if (selectedDifficulty !== "all") params.set("difficulty", selectedDifficulty);
         if (selectedLanguage !== "all") params.set("language", selectedLanguage);
 
-        const res = await fetch(`${API_URL}/videos?${params.toString()}`);
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://aitube-be-production.up.railway.app/api/v1";
+        const res = await fetch(`${apiUrl}/videos?${params.toString()}`);
+        if (!res.ok) throw new Error(`API error: ${res.status}`);
         const json = await res.json();
 
         if (json.success) {
