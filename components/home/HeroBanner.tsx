@@ -33,8 +33,7 @@ export default function HeroBanner() {
             </Link>
             <Link href="/about">
               <Button
-                variant="outline"
-                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-700 h-12 px-8 text-base font-semibold"
+                className="bg-white/20 border-2 border-white text-white hover:bg-white hover:text-blue-700 h-12 px-8 text-base font-semibold"
               >
                 서비스 소개
               </Button>
