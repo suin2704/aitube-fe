@@ -54,6 +54,22 @@ export default function Footer() {
                   전체 영상
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/terms"
+                  className="text-sm hover:text-white transition-colors"
+                >
+                  이용약관
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/privacy"
+                  className="text-sm hover:text-white transition-colors"
+                >
+                  개인정보처리방침
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
