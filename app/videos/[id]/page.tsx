@@ -101,16 +101,61 @@ export default async function VideoDetailPage({
             </CardHeader>
             <CardContent>
               {video.aiSummary ? (
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  {video.aiSummary}
-                </p>
+                <div className="space-y-4">
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    {video.aiSummary}
+                  </p>
+
+                  {video.aiKeyPoints && video.aiKeyPoints.length > 0 && (
+                    <div>
+                      <h4 className="text-sm font-semibold text-slate-800 mb-2">
+                        📌 핵심 포인트
+                      </h4>
+                      <ul className="space-y-1">
+                        {video.aiKeyPoints.map((point, i) => (
+                          <li
+                            key={i}
+                            className="text-sm text-slate-600 flex items-start gap-2"
+                          >
+                            <span className="text-blue-500 mt-0.5">•</span>
+                            <span>{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {video.aiKeywords && video.aiKeywords.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5">
+                      {video.aiKeywords.map((kw) => (
+                        <span
+                          key={kw}
+                          className="px-2 py-0.5 bg-blue-50 text-blue-700 text-xs rounded-full"
+                        >
+                          #{kw}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="flex items-center gap-3 text-xs text-slate-500 pt-2 border-t border-slate-100">
+                    {video.aiDifficulty && (
+                      <span className="px-2 py-0.5 bg-slate-100 rounded">
+                        난이도: {video.aiDifficulty}
+                      </span>
+                    )}
+                    {video.aiEstimatedTime && (
+                      <span>⏱ 예상 {video.aiEstimatedTime}분</span>
+                    )}
+                  </div>
+                </div>
               ) : (
                 <div className="text-center py-6">
                   <p className="text-sm text-slate-400">
                     AI 요약이 준비 중입니다.
                   </p>
                   <p className="text-xs text-slate-300 mt-1">
-                    Phase 1-2에서 제공 예정
+                    곧 자동으로 생성됩니다
                   </p>
                 </div>
               )}

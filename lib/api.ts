@@ -20,6 +20,12 @@ function transformVideo(api: ApiVideo): Video {
     language: api.language as Video["language"],
     tags: api.tags,
     aiSummary: api.summary?.summary,
+    aiKeyPoints: api.summary?.keyPoints || [],
+    aiKeywords: api.summary?.keywords || [],
+    aiDifficulty: api.summary?.difficulty || undefined,
+    aiEstimatedTime: api.summary?.estimatedTime || undefined,
+    aiCategory: api.summary?.aiCategory || undefined,
+    aiStatus: api.summary?.status || undefined,
     isFeatured: api.isFeatured,
   };
 }
@@ -102,4 +108,38 @@ export async function fetchCategories(): Promise<ApiCategory[]> {
 
   const json = await res.json();
   return json.data;
+}
+
+interface FetchSearchParams {
+  q: string;
+  page?: number;
+  limit?: number;
+}
+
+interface FetchSearchResult {
+  query: string;
+  videos: Video[];
+  pagination: ApiPagination;
+}
+
+export async function fetchSearch(params: FetchSearchParams): Promise<FetchSearchResult> {
+  const searchParams = new URLSearchParams();
+  searchParams.set("q", params.q);
+  if (params.page) searchParams.set("page", String(params.page));
+  if (params.limit) searchParams.set("limit", String(params.limit));
+
+  const res = await fetch(`${API_URL}/search?${searchParams.toString()}`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error(`Failed to search videos: ${res.status}`);
+  }
+
+  const json = await res.json();
+  return {
+    query: json.data.query,
+    videos: json.data.videos.map(transformVideo),
+    pagination: json.data.pagination,
+  };
 }

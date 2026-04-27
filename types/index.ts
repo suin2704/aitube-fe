@@ -14,6 +14,12 @@ export interface Video {
   language: Language;
   tags: string[];
   aiSummary?: string;
+  aiKeyPoints?: string[];
+  aiKeywords?: string[];
+  aiDifficulty?: string;
+  aiEstimatedTime?: number;
+  aiCategory?: string;
+  aiStatus?: string;
   isFeatured?: boolean;
 }
 
@@ -56,6 +62,11 @@ export interface ApiVideo {
   summary?: {
     summary: string;
     keyPoints: string[];
+    keywords: string[];
+    difficulty: string | null;
+    estimatedTime: number | null;
+    aiCategory: string | null;
+    status: string;
   } | null;
 }
 
