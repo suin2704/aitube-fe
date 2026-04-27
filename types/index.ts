@@ -1,6 +1,6 @@
 export interface Video {
   id: string;
-  youtubeId: string;
+  youtubeId?: string;
   title: string;
   description: string;
   youtubeUrl: string;

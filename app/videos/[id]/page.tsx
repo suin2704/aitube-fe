@@ -31,6 +31,7 @@ export default async function VideoDetailPage({
   if (!video) {
     const { notFound } = await import("next/navigation");
     notFound();
+    return null;
   }
 
   const relatedVideos = await fetchRelatedVideos(id, 4);
@@ -47,7 +48,7 @@ export default async function VideoDetailPage({
 
       <div className="grid lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
-          <VideoPlayer youtubeId={video.youtubeId} thumbnailUrl={video.thumbnailUrl} title={video.title} />
+          <VideoPlayer youtubeId={video.youtubeId || ""} thumbnailUrl={video.thumbnailUrl} title={video.title} />
 
           <div className="flex flex-wrap items-center gap-2 mb-4">
             <CategoryBadge category={video.category} />
