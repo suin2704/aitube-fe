@@ -35,7 +35,7 @@ export default function Header() {
                 className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                   pathname === link.href
                     ? "bg-blue-50 text-blue-700"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                    : "text-slate-700 hover:text-slate-900 hover:bg-slate-100"
                 }`}
               >
                 {link.label}
