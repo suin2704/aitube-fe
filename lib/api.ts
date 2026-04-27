@@ -6,6 +6,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://aitube-be-production
 function transformVideo(api: ApiVideo): Video {
   return {
     id: String(api.id),
+    youtubeId: api.youtubeId,
     title: api.title,
     description: api.description || "",
     youtubeUrl: `https://youtube.com/watch?v=${api.youtubeId}`,
