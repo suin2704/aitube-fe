@@ -4,6 +4,8 @@ import FeaturedVideos from "@/components/home/FeaturedVideos";
 import LatestVideos from "@/components/home/LatestVideos";
 import { fetchVideos } from "@/lib/api";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const [featuredResult, latestResult] = await Promise.all([
     fetchVideos({ sort: "popular", limit: 4 }),

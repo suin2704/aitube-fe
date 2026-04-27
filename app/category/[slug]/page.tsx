@@ -5,6 +5,8 @@ import { fetchVideos } from "@/lib/api";
 import { CATEGORY_SLUGS } from "@/lib/constants";
 import type { Category } from "@/types";
 
+export const dynamic = "force-dynamic";
+
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
 }
