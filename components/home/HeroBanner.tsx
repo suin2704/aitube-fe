@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Bot, ArrowRight } from "lucide-react";
 
 export default function HeroBanner() {
@@ -25,18 +24,20 @@ export default function HeroBanner() {
             큐레이션된 영상과 AI 요약으로 학습 시간을 절약하세요.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/videos">
-              <Button className="bg-white text-blue-700 hover:bg-blue-50 h-12 px-8 text-base font-semibold">
-                영상 둘러보기
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
+            <Link
+              href="/videos"
+              style={{ backgroundColor: "white", color: "#1d4ed8" }}
+              className="inline-flex items-center justify-center h-12 px-8 rounded-lg text-base font-semibold hover:opacity-90 transition-opacity"
+            >
+              영상 둘러보기
+              <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
-            <Link href="/about">
-              <Button
-                className="bg-white text-blue-700 hover:bg-blue-50 h-12 px-8 text-base font-semibold"
-              >
-                서비스 소개
-              </Button>
+            <Link
+              href="/about"
+              style={{ backgroundColor: "white", color: "#1d4ed8" }}
+              className="inline-flex items-center justify-center h-12 px-8 rounded-lg text-base font-semibold hover:opacity-90 transition-opacity"
+            >
+              서비스 소개
             </Link>
           </div>
         </div>
