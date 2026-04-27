@@ -51,7 +51,7 @@ export async function fetchVideos(params: FetchVideosParams = {}): Promise<Fetch
 
   const qs = searchParams.toString();
   const res = await fetch(`${API_URL}/videos${qs ? `?${qs}` : ""}`, {
-    next: { revalidate: 60 },
+    cache: "no-store",
   });
 
   if (!res.ok) {
@@ -84,7 +84,7 @@ export async function fetchVideoById(id: string): Promise<Video | null> {
 
 export async function fetchRelatedVideos(id: string, limit = 4): Promise<Video[]> {
   const res = await fetch(`${API_URL}/videos/${id}/related?limit=${limit}`, {
-    next: { revalidate: 60 },
+    cache: "no-store",
   });
 
   if (!res.ok) return [];
@@ -95,7 +95,7 @@ export async function fetchRelatedVideos(id: string, limit = 4): Promise<Video[]
 
 export async function fetchCategories(): Promise<ApiCategory[]> {
   const res = await fetch(`${API_URL}/categories`, {
-    next: { revalidate: 300 },
+    cache: "no-store",
   });
 
   if (!res.ok) throw new Error(`Failed to fetch categories: ${res.status}`);
