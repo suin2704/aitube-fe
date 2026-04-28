@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const [featuredResult, latestResult] = await Promise.all([
-    fetchVideos({ sort: "popular", limit: 12 }),
+    fetchVideos({ sort: "popular", limit: 50 }),
     fetchVideos({ sort: "latest", limit: 8 }),
   ]);
 
