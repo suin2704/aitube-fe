@@ -38,7 +38,7 @@ export default function BookmarksPage() {
     <div className="max-w-7xl mx-auto px-4 py-8">
       <div className="flex items-center gap-3 mb-8">
         <Bookmark className="w-7 h-7 text-blue-600" />
-        <h1 className="text-2xl font-bold text-slate-900">
+        <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
           북마크
         </h1>
         <span className="text-sm text-slate-500">{videos.length}개 영상</span>

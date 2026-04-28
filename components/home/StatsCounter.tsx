@@ -36,7 +36,7 @@ function Counter({ end, label, suffix = "" }: CounterProps) {
         {count.toLocaleString()}
         {suffix}
       </div>
-      <div className="text-sm text-slate-500 mt-1">{label}</div>
+      <div className="text-sm text-slate-500 dark:text-slate-400 mt-1">{label}</div>
     </div>
   );
 }
@@ -45,7 +45,7 @@ export default function StatsCounter() {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-8">
       <Counter end={150} label="큐레이션 영상" suffix="+" />
-      <Counter end={5} label="카테고리" />
+      <Counter end={3} label="카테고리" />
       <Counter end={3} label="난이도 분류" />
       <Counter end={50} label="AI 요약 제공" suffix="+" />
     </div>

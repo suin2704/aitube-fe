@@ -40,7 +40,7 @@ export default async function VideoDetailPage({
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <Link
         href="/videos"
-        className="inline-flex items-center text-sm text-slate-500 hover:text-slate-700 mb-6"
+        className="inline-flex items-center text-sm text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 mb-6"
       >
         <ArrowLeft className="w-4 h-4 mr-1" />
         영상 목록으로
@@ -59,12 +59,12 @@ export default async function VideoDetailPage({
             </span>
           </div>
 
-          <h1 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+          <h1 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">
             {video.title}
           </h1>
 
-          <div className="flex items-center gap-4 text-sm text-slate-500 mb-6">
-            <span className="font-medium text-slate-700">
+          <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400 mb-6">
+            <span className="font-medium text-slate-700 dark:text-slate-300">
               {video.channelName}
             </span>
             <span className="flex items-center gap-1">
@@ -78,7 +78,7 @@ export default async function VideoDetailPage({
             <span>{formatRelativeDate(video.publishedAt)}</span>
           </div>
 
-          <p className="text-slate-600 leading-relaxed mb-6">
+          <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
             {video.description}
           </p>
 
@@ -102,20 +102,20 @@ export default async function VideoDetailPage({
             <CardContent>
               {video.aiSummary ? (
                 <div className="space-y-4">
-                  <p className="text-sm text-slate-600 leading-relaxed">
+                  <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                     {video.aiSummary}
                   </p>
 
                   {video.aiKeyPoints && video.aiKeyPoints.length > 0 && (
                     <div>
-                      <h4 className="text-sm font-semibold text-slate-800 mb-2">
+                      <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-2">
                         📌 핵심 포인트
                       </h4>
                       <ul className="space-y-1">
                         {video.aiKeyPoints.map((point, i) => (
                           <li
                             key={i}
-                            className="text-sm text-slate-600 flex items-start gap-2"
+                            className="text-sm text-slate-600 dark:text-slate-300 flex items-start gap-2"
                           >
                             <span className="text-blue-500 mt-0.5">•</span>
                             <span>{point}</span>
@@ -130,7 +130,7 @@ export default async function VideoDetailPage({
                       {video.aiKeywords.map((kw) => (
                         <span
                           key={kw}
-                          className="px-2 py-0.5 bg-blue-50 text-blue-700 text-xs rounded-full"
+                          className="px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-xs rounded-full"
                         >
                           #{kw}
                         </span>
@@ -138,9 +138,9 @@ export default async function VideoDetailPage({
                     </div>
                   )}
 
-                  <div className="flex items-center gap-3 text-xs text-slate-500 pt-2 border-t border-slate-100">
+                  <div className="flex items-center gap-3 text-xs text-slate-500 pt-2 border-t border-slate-100 dark:border-slate-700">
                     {video.aiDifficulty && (
-                      <span className="px-2 py-0.5 bg-slate-100 rounded">
+                      <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-700 rounded">
                         난이도: {video.aiDifficulty}
                       </span>
                     )}
@@ -171,7 +171,7 @@ export default async function VideoDetailPage({
                 {video.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 bg-slate-100 text-slate-600 text-sm rounded-full"
+                    className="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-sm rounded-full"
                   >
                     #{tag}
                   </span>
@@ -184,7 +184,7 @@ export default async function VideoDetailPage({
 
       {relatedVideos.length > 0 && (
         <div className="mt-12">
-          <h2 className="text-xl font-bold text-slate-900 mb-6">📺 관련 영상</h2>
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-6">📺 관련 영상</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {relatedVideos.map((v) => (
               <VideoCard key={v.id} video={v} />

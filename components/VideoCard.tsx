@@ -22,7 +22,7 @@ export default function VideoCard({ video }: { video: Video }) {
           <div className="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-2 py-1 rounded">
             {video.duration}
           </div>
-          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="absolute top-2 right-2">
             <BookmarkButton videoId={video.id} />
           </div>
         </div>
@@ -38,7 +38,7 @@ export default function VideoCard({ video }: { video: Video }) {
             {video.description}
           </p>
           <div className="flex items-center justify-between text-xs text-slate-400 dark:text-slate-500">
-            <span className="font-medium text-slate-600">
+            <span className="font-medium text-slate-600 dark:text-slate-300">
               {video.channelName}
             </span>
             <div className="flex items-center gap-3">

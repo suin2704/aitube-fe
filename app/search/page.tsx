@@ -73,8 +73,8 @@ function SearchResults() {
     return (
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
         <Search className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-        <h1 className="text-2xl font-bold text-slate-900 mb-2">영상 검색</h1>
-        <p className="text-slate-500">
+        <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">영상 검색</h1>
+        <p className="text-slate-500 dark:text-slate-400">
           상단 검색 아이콘을 클릭하여 AI 관련 영상을 검색해보세요.
         </p>
       </div>
@@ -84,11 +84,11 @@ function SearchResults() {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-slate-900">
+        <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
           &ldquo;{q}&rdquo; 검색 결과
         </h1>
         {pagination && (
-          <p className="text-sm text-slate-500 mt-1">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
             총 {pagination.total}개의 영상
           </p>
         )}
@@ -132,11 +132,11 @@ function SearchResults() {
               <button
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
                 disabled={page <= 1}
-                className="px-4 py-2 text-sm font-medium rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-2 text-sm font-medium rounded-lg border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 이전
               </button>
-              <span className="text-sm text-slate-600">
+              <span className="text-sm text-slate-600 dark:text-slate-400">
                 {page} / {pagination.totalPages}
               </span>
               <button
@@ -144,7 +144,7 @@ function SearchResults() {
                   setPage((p) => Math.min(pagination.totalPages, p + 1))
                 }
                 disabled={page >= pagination.totalPages}
-                className="px-4 py-2 text-sm font-medium rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-2 text-sm font-medium rounded-lg border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 다음
               </button>

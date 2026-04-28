@@ -72,8 +72,8 @@ export default function VideosPage() {
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h1 className="text-3xl font-bold text-slate-900 mb-2">영상 목록</h1>
-      <p className="text-slate-500 mb-6">
+      <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">영상 목록</h1>
+      <p className="text-slate-500 dark:text-slate-400 mb-6">
         AI 관련 큐레이션된 영상을 탐색하세요
       </p>
 
@@ -86,7 +86,7 @@ export default function VideosPage() {
             setSelectedDifficulty(e.target.value as Difficulty | "all");
             setCurrentPage(1);
           }}
-          className="px-3 py-2 border border-slate-200 rounded-lg text-sm bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value="all">전체 난이도</option>
           {Object.entries(DIFFICULTY_MAP).map(([key, label]) => (
@@ -102,7 +102,7 @@ export default function VideosPage() {
             setSelectedLanguage(e.target.value as Language | "all");
             setCurrentPage(1);
           }}
-          className="px-3 py-2 border border-slate-200 rounded-lg text-sm bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value="all">전체 언어</option>
           {Object.entries(LANGUAGE_MAP).map(([key, label]) => (
@@ -118,13 +118,13 @@ export default function VideosPage() {
             setSortBy(e.target.value as SortOption);
             setCurrentPage(1);
           }}
-          className="px-3 py-2 border border-slate-200 rounded-lg text-sm bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value="latest">최신순</option>
           <option value="popular">인기순</option>
         </select>
 
-        <span className="ml-auto text-sm text-slate-500 self-center">
+        <span className="ml-auto text-sm text-slate-500 dark:text-slate-400 self-center">
           총 {totalCount}개 영상
         </span>
       </div>
@@ -132,7 +132,7 @@ export default function VideosPage() {
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {Array.from({ length: 8 }).map((_, i) => (
-            <div key={i} className="animate-pulse bg-slate-200 rounded-xl h-72" />
+            <div key={i} className="animate-pulse bg-slate-200 dark:bg-slate-700 rounded-xl h-72" />
           ))}
         </div>
       ) : (

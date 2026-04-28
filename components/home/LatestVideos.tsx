@@ -12,14 +12,14 @@ export default function LatestVideos({ videos }: { videos: Video[] }) {
     .slice(0, 8);
 
   return (
-    <section className="py-12 bg-slate-50">
+    <section className="py-12 bg-slate-50 dark:bg-slate-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="text-2xl font-bold text-slate-900">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
               🆕 최신 영상
             </h2>
-            <p className="text-slate-500 mt-1">
+            <p className="text-slate-500 dark:text-slate-400 mt-1">
               최근 업로드된 AI 영상을 만나보세요
             </p>
           </div>

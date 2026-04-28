@@ -14,10 +14,10 @@ export default function BookmarkButton({ videoId }: { videoId: string }) {
         e.stopPropagation();
         toggleBookmark(videoId);
       }}
-      className={`p-1.5 rounded-lg transition-colors ${
+      className={`p-1.5 rounded-lg transition-all ${
         active
-          ? "bg-blue-600 text-white"
-          : "bg-black/50 text-white hover:bg-black/70"
+          ? "bg-blue-600 text-white opacity-100"
+          : "bg-black/50 text-white opacity-0 group-hover:opacity-100"
       }`}
       title={active ? "북마크 해제" : "북마크 추가"}
     >
