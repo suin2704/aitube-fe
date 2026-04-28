@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Plus, Trash2, Loader2 } from "lucide-react";
+import { Plus, Trash2, Loader2, ExternalLink } from "lucide-react";
 import {
   fetchAdminChannels,
   createAdminChannel,
@@ -103,6 +103,9 @@ export default function AdminChannelsPage() {
                 className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
+              <p className="mt-1 text-xs text-slate-400">
+                채널 페이지 URL의 /channel/ 뒤 부분 (UC로 시작)
+              </p>
             </div>
             <div>
               <label className="block text-xs font-medium text-slate-500 mb-1">채널명 *</label>
@@ -173,7 +176,17 @@ export default function AdminChannelsPage() {
                 {channels.map((ch) => (
                   <tr key={ch.id} className={`border-b border-slate-100 ${!ch.isActive ? "opacity-50" : ""}`}>
                     <td className="px-4 py-3 text-slate-500">{ch.id}</td>
-                    <td className="px-4 py-3 font-medium text-slate-700">{ch.name}</td>
+                    <td className="px-4 py-3 font-medium text-slate-700">
+                      <a
+                        href={`https://www.youtube.com/channel/${ch.youtubeId}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 hover:text-blue-600 transition-colors"
+                      >
+                        {ch.name}
+                        <ExternalLink className="w-3 h-3 text-slate-400" />
+                      </a>
+                    </td>
                     <td className="px-4 py-3 text-slate-500 font-mono text-xs">{ch.youtubeId}</td>
                     <td className="px-4 py-3 text-slate-600">{ch.defaultCategory?.name || "—"}</td>
                     <td className="px-4 py-3 text-slate-700">{ch._count.videos}</td>
