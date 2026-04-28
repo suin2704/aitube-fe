@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 import { Bot, Menu, X, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Header() {
   const pathname = usePathname();
@@ -32,16 +33,17 @@ export default function Header() {
   const navLinks = [
     { href: "/", label: "홈" },
     { href: "/videos", label: "영상 목록" },
+    { href: "/bookmarks", label: "북마크" },
     { href: "/about", label: "소개" },
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
+    <header className="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 shadow-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2 group">
             <Bot className="w-8 h-8 text-blue-600 group-hover:text-blue-700 transition-colors" />
-            <span className="text-xl font-bold text-slate-900">
+            <span className="text-xl font-bold text-slate-900 dark:text-white">
               AI Tube
             </span>
           </Link>
@@ -53,8 +55,8 @@ export default function Header() {
                 href={link.href}
                 className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${
                   pathname === link.href
-                    ? "bg-blue-50 text-blue-700"
-                    : "text-slate-900 hover:text-blue-600 hover:bg-slate-100"
+                    ? "bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400"
+                    : "text-slate-900 hover:text-blue-600 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
                 }`}
               >
                 {link.label}
@@ -95,6 +97,7 @@ export default function Header() {
                 <Search className="w-5 h-5" />
               </Button>
             )}
+            <ThemeToggle />
             <Button
               variant="ghost"
               size="icon"

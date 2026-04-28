@@ -100,11 +100,10 @@ export async function createAdminChannel(data: Record<string, unknown>) {
     method: "POST",
     body: JSON.stringify(data),
   });
+  const json = await res.json();
   if (!res.ok) {
-    const json = await res.json();
     throw new Error(json.error?.message || "채널 추가 실패");
   }
-  const json = await res.json();
   return json.data;
 }
 

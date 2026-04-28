@@ -4,12 +4,13 @@ import { Clock, Eye } from "lucide-react";
 import { formatViewCount, formatRelativeDate } from "@/lib/utils";
 import DifficultyBadge from "@/components/DifficultyBadge";
 import CategoryBadge from "@/components/CategoryBadge";
+import BookmarkButton from "@/components/BookmarkButton";
 import type { Video } from "@/types";
 
 export default function VideoCard({ video }: { video: Video }) {
   return (
     <Link href={`/videos/${video.id}`} className="group block">
-      <div className="bg-white rounded-xl overflow-hidden border border-slate-200 hover:border-slate-300 hover:shadow-lg transition-all duration-200">
+      <div className="bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-lg transition-all duration-200">
         <div className="relative aspect-video overflow-hidden">
           <Image
             src={video.thumbnailUrl}
@@ -21,19 +22,22 @@ export default function VideoCard({ video }: { video: Video }) {
           <div className="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-2 py-1 rounded">
             {video.duration}
           </div>
+          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+            <BookmarkButton videoId={video.id} />
+          </div>
         </div>
         <div className="p-4">
           <div className="flex items-center gap-2 mb-2">
             <CategoryBadge category={video.category} />
             <DifficultyBadge difficulty={video.difficulty} />
           </div>
-          <h3 className="font-semibold text-slate-900 line-clamp-2 mb-2 group-hover:text-blue-600 transition-colors">
+          <h3 className="font-semibold text-slate-900 dark:text-slate-100 line-clamp-2 mb-2 group-hover:text-blue-600 transition-colors">
             {video.title}
           </h3>
-          <p className="text-sm text-slate-500 line-clamp-2 mb-3">
+          <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-2 mb-3">
             {video.description}
           </p>
-          <div className="flex items-center justify-between text-xs text-slate-400">
+          <div className="flex items-center justify-between text-xs text-slate-400 dark:text-slate-500">
             <span className="font-medium text-slate-600">
               {video.channelName}
             </span>
