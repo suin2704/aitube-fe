@@ -6,6 +6,7 @@ import {
   fetchAdminChannels,
   createAdminChannel,
   deleteAdminChannel,
+  updateAdminChannel,
 } from "@/lib/admin-api";
 
 interface AdminChannel {
@@ -188,7 +189,26 @@ export default function AdminChannelsPage() {
                       </a>
                     </td>
                     <td className="px-4 py-3 text-slate-500 font-mono text-xs">{ch.youtubeId}</td>
-                    <td className="px-4 py-3 text-slate-600">{ch.defaultCategory?.name || "—"}</td>
+                    <td className="px-4 py-3 text-slate-600">
+                      <select
+                        value={ch.defaultCategory?.id || ""}
+                        onChange={async (e) => {
+                          const catId = e.target.value ? parseInt(e.target.value) : null;
+                          try {
+                            await updateAdminChannel(ch.id, { defaultCategoryId: catId });
+                            await load();
+                          } catch (err) {
+                            alert(err instanceof Error ? err.message : "수정 실패");
+                          }
+                        }}
+                        className="px-2 py-1 border border-slate-200 rounded text-xs bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      >
+                        <option value="">미지정</option>
+                        <option value="1">🔥 AI 트렌드</option>
+                        <option value="2">🔧 AI 활용</option>
+                        <option value="3">📚 AI 학습</option>
+                      </select>
+                    </td>
                     <td className="px-4 py-3 text-slate-700">{ch._count.videos}</td>
                     <td className="px-4 py-3 text-slate-400 text-xs">
                       {ch.lastFetchedAt

@@ -12,6 +12,7 @@ import DifficultyBadge from "@/components/DifficultyBadge";
 import CategoryBadge from "@/components/CategoryBadge";
 import VideoCard from "@/components/VideoCard";
 import VideoPlayer from "@/components/VideoPlayer";
+import CommentSection from "@/components/CommentSection";
 import { fetchVideoById, fetchRelatedVideos } from "@/lib/api";
 import { LANGUAGE_MAP } from "@/lib/constants";
 import { formatViewCount, formatRelativeDate } from "@/lib/utils";
@@ -192,6 +193,8 @@ export default async function VideoDetailPage({
           </div>
         </div>
       )}
+
+      <CommentSection videoId={id} />
     </div>
   );
 }

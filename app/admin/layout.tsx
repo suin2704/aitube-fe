@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
-import { Bot, LayoutDashboard, Film, Radio, LogOut } from "lucide-react";
+import { Bot, LayoutDashboard, Film, Radio, BarChart3, LogOut } from "lucide-react";
 import { adminVerify, clearToken } from "@/lib/admin-api";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -43,6 +43,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { href: "/admin", label: "대시보드", icon: LayoutDashboard },
     { href: "/admin/videos", label: "영상 관리", icon: Film },
     { href: "/admin/channels", label: "채널 관리", icon: Radio },
+    { href: "/admin/analytics", label: "방문자 통계", icon: BarChart3 },
   ];
 
   return (

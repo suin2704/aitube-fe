@@ -141,3 +141,11 @@ export async function fetchCrawlStatus() {
   const json = await res.json();
   return json.data;
 }
+
+// Analytics
+export async function fetchAdminAnalytics() {
+  const res = await adminFetch("/admin/analytics");
+  if (!res.ok) throw new Error("방문자 통계 조회 실패");
+  const json = await res.json();
+  return json.data;
+}
